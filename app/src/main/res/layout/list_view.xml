@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:padding="5dp"
             android:gravity="center"
+            android:background="@drawable/selector_list"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:text="@string/applePie" />
 

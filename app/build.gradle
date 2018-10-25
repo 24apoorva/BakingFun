@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     //ExoPlayer
     implementation 'com.google.android.exoplayer:exoplayer:r2.5.1'
-   // implementation 'com.google.android.exoplayer:exoplayer:2.8.2'
+    // implementation 'com.google.android.exoplayer:exoplayer:2.8.2'
 //    implementation ('com.google.android.exoplayer:exoplayer:r2.2.0'){
 //        exclude group: 'com.android.support'
 //        exclude module: 'appcompat-v7'
@@ -52,11 +52,11 @@ dependencies {
 //    implementation 'com.google.android.exoplayer:exoplayer-ui:2.7.3'
 //    implementation 'com.google.android.exoplayer:exoplayer-hls:r2.4.0'
 //    implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.0'
-  //  compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
-  //  compile 'com.google.android.exoplayer:exoplayer-core:r2.4.0'
-  //  compile 'com.google.android.exoplayer:exoplayer-dash:r2.4.0'
-  //  compile 'com.google.android.exoplayer:exoplayer-hls:r2.4.0'
+    //  compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
+    //  compile 'com.google.android.exoplayer:exoplayer-core:r2.4.0'
+    //  compile 'com.google.android.exoplayer:exoplayer-dash:r2.4.0'
+    //  compile 'com.google.android.exoplayer:exoplayer-hls:r2.4.0'
     //compile 'com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.0'
-   // compile 'com.google.android.exoplayer:exoplayer-ui:r2.4.0'
+    // compile 'com.google.android.exoplayer:exoplayer-ui:r2.4.0'
 
 }

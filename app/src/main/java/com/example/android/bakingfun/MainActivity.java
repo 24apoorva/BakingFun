@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private Recipe[] allRecipes;
+    public static Recipe[] widgetData;
     private Parcelable listState;
     private final String LIST = "list";
     private final String RECIPES_DATA = "recipesdata";
@@ -71,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void requestDataAndDisplay(final Context context, String url){
-        Toast.makeText(getApplicationContext(),"Volley request", Toast.LENGTH_SHORT).show();
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -97,12 +97,11 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(context, recipe);
         allRecipes = recipe;
+        widgetData = recipe;
         if(recipe.length != 0){
             mRecyclerView.setAdapter(mAdapter);
         }
-        else {
-            Toast.makeText(MainActivity.this,"recipie"+recipe[0].getName(), Toast.LENGTH_SHORT).show();
-        }
+
     }
     @Override
     protected void onStop() {
