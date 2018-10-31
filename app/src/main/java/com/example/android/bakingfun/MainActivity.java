@@ -37,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if(savedInstanceState != null){
-           allRecipes = (Recipe[]) savedInstanceState.getSerializable(RECIPES_DATA);
-           listState = savedInstanceState.getParcelable(LIST);
-           displayData(this,allRecipes);
+            if(savedInstanceState.containsKey(RECIPES_DATA)){
+                allRecipes = (Recipe[]) savedInstanceState.getSerializable(RECIPES_DATA);
+                listState = savedInstanceState.getParcelable(LIST);
+                displayData(this,allRecipes);
+            }
+
         }else{
             String URL_STRING = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
             requestDataAndDisplay(this, URL_STRING);
@@ -50,8 +53,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
         // Save list state
-        state.putSerializable(RECIPES_DATA,allRecipes);
-        state.putParcelable(LIST, mRecyclerView.getLayoutManager().onSaveInstanceState());
+            state.putSerializable(RECIPES_DATA,allRecipes);
+            state.putParcelable(LIST, mRecyclerView.getLayoutManager().onSaveInstanceState());
+
     }
 
     @Override
