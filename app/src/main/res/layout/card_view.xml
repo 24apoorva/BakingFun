@@ -10,12 +10,12 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:id="@+id/card_ing"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/d_5dp"
         android:layout_height="match_parent"
         android:background="@drawable/selector_list"
         android:layout_gravity="center"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="3dp">
+        app:cardCornerRadius="@dimen/d_12dp"
+        app:cardElevation="@dimen/dp_3">
 
         <TextView
             android:id="@+id/card_textview"
@@ -24,7 +24,7 @@
             android:background="@drawable/selector_list"
             android:gravity="center"
             android:layout_gravity="center"
-            android:padding="8dp"
+            android:padding="@dimen/widget_8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:text="@string/applePie" />
 

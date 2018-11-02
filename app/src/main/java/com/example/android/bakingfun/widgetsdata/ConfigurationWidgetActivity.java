@@ -2,7 +2,6 @@ package com.example.android.bakingfun.widgetsdata;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -11,13 +10,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.example.android.bakingfun.Ingredient;
 import com.example.android.bakingfun.MainActivity;
 import com.example.android.bakingfun.R;
 import com.example.android.bakingfun.Recipe;
@@ -31,7 +27,6 @@ public class ConfigurationWidgetActivity extends AppCompatActivity {
     public static final String SHARED_PREFS = "prefs";
     public static final String KEY_RECIPE_NAME = "keyRecipeName";
     private String sendName = "Recipe Name";
-    private Button finishButton;
     private Recipe[] dataNeeded;
 
     private int appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -56,11 +51,10 @@ public class ConfigurationWidgetActivity extends AppCompatActivity {
         }
 
         dataNeeded = MainActivity.widgetData;
-        ListView listView = (ListView) findViewById(R.id.config_list);
+        ListView listView = findViewById(R.id.config_list);
         List<String> fullData = getIngredientsFull(dataNeeded);
-        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.list_view,R.id.list_textView, fullData);
+        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.widget_text, R.id.widget_list_textView, fullData);
         listView.setAdapter(mArrayAdapter);
-        finishButton = (Button)findViewById(R.id.finish_button);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -73,8 +67,8 @@ public class ConfigurationWidgetActivity extends AppCompatActivity {
 
     private List<String> getIngredientsFull(Recipe[] data) {
         List<String> names = new ArrayList<>();
-        for(int i=0;i<data.length;i++){
-            names.add(data[i].getName());
+        for (Recipe aData : data) {
+            names.add(aData.getName());
         }
         return names;
     }

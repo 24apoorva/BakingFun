@@ -1,9 +1,7 @@
 package com.example.android.bakingfun;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,16 +9,11 @@ import com.example.android.bakingfun.fragmentsdata.FragmentSelectionAdapter;
 import com.example.android.bakingfun.fragmentsdata.IngredientsFragment;
 import com.example.android.bakingfun.fragmentsdata.StepsFragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RecipeStepsActivity extends AppCompatActivity {
-    private static final String TAG = "RecipeStepsActivity";
     public static final String STEPS_DATA = "steps details";
     public static Recipe recipe;
     private final String RECIPE_DATA = "recipie data";
-    public static boolean phone;
-    public static FragmentTransaction fT;
+    private static boolean phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +31,7 @@ public class RecipeStepsActivity extends AppCompatActivity {
             recipe = (Recipe) intent.getSerializableExtra(STEPS_DATA);
         }
 
+        assert recipe != null;
         setTitle(recipe.getName());
         if( findViewById(R.id.viewpager) != null){
             phone = true;

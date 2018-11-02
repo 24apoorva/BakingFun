@@ -2,7 +2,6 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
@@ -24,27 +23,27 @@
         <FrameLayout
             android:layout_width="261dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/widget_8dp"
+            android:layout_marginStart="@dimen/widget_8dp"
+            android:layout_marginTop="@dimen/widget_8dp"
             android:id="@+id/left_frame"/>
 
     </LinearLayout>
 
 
     <View
-        android:layout_width="2dp"
+        android:layout_width="@dimen/dp_2"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
+        android:paddingBottom="@dimen/widget_8dp"
+        android:paddingLeft="@dimen/widget_8dp"
         android:background="@color/white"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
+        android:paddingRight="@dimen/widget_8dp"
+        android:paddingTop="@dimen/widget_8dp"
         android:orientation="vertical">
 
         <TextView
@@ -59,7 +58,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/d_5dp"
             android:id="@+id/ing_right_frame">
 
         </FrameLayout>
@@ -68,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="800dp"
             android:id="@+id/right_frame"
-            android:layout_margin="5dp">
+            android:layout_margin="@dimen/d_5dp">
 
         </FrameLayout>
 

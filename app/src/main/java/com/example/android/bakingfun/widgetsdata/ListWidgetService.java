@@ -3,11 +3,7 @@ package com.example.android.bakingfun.widgetsdata;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.os.Binder;
 import android.util.Log;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -25,12 +21,12 @@ public class ListWidgetService extends RemoteViewsService{
         return new WidgetListItemViewFactory(getApplicationContext(),intent);
     }
 
-    public class WidgetListItemViewFactory implements RemoteViewsFactory {
-        private Context context;
-        private int appWidgetId;
-        private String myName;
+    class WidgetListItemViewFactory implements RemoteViewsFactory {
+        private final Context context;
+        private final int appWidgetId;
+        private final String myName;
         private List<Ingredient> ingData;
-        Recipe[] allData = MainActivity.widgetData;
+        final Recipe[] allData = MainActivity.widgetData;
 
 
         WidgetListItemViewFactory(Context context, Intent intent){

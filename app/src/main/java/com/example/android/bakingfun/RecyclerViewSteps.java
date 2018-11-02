@@ -2,28 +2,23 @@ package com.example.android.bakingfun;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.android.bakingfun.fragmentsdata.DetailsStepsFragment;
-import com.example.android.bakingfun.fragmentsdata.StepsFragment;
 
 import java.util.List;
 
 public class RecyclerViewSteps extends RecyclerView.Adapter<RecyclerViewSteps.StepsViewHolder>{
 
-    private Context context;
-    private List<Step> step;
-    private boolean phone;
+    private final Context context;
+    private final List<Step> step;
+    private final boolean phone;
     private int row_index = -1;
 
     public RecyclerViewSteps(Context context, List<Step> step, boolean phone){
@@ -39,24 +34,25 @@ public class RecyclerViewSteps extends RecyclerView.Adapter<RecyclerViewSteps.St
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StepsViewHolder stepsViewHolder, final int i) {
+    public void onBindViewHolder(@NonNull StepsViewHolder stepsViewHolder,int i) {
         final String stepDes = step.get(i).getShortDescription();
         stepsViewHolder.stepsText.setText(stepDes);
+        final int p = i;
         stepsViewHolder.stepsText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                row_index = i;
+                row_index = p;
                 notifyDataSetChanged();
                 if(!phone){
                     DetailsStepsFragment detailsStepsFragment = new DetailsStepsFragment();
-                    detailsStepsFragment.setPosition(i);
-                    detailsStepsFragment.setStep(step.get(i));
+                    detailsStepsFragment.setPosition(p);
+                    detailsStepsFragment.setStep(step.get(p));
                     AppCompatActivity activity = (AppCompatActivity) v.getContext();
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.right_frame, detailsStepsFragment).commit();
                 }else{
                     Intent detailedViewIntent = new Intent(context, DetailedActivityView.class);
                     detailedViewIntent.putExtra(DetailedActivityView.DETAILED_DATA,RecipeStepsActivity.recipe);
-                    detailedViewIntent.putExtra(DetailedActivityView.STEP_POSITION,i);
+                    detailedViewIntent.putExtra(DetailedActivityView.STEP_POSITION,p);
                     context.startActivity(detailedViewIntent);
                 }
 
@@ -78,7 +74,7 @@ public class RecyclerViewSteps extends RecyclerView.Adapter<RecyclerViewSteps.St
 
     class StepsViewHolder extends RecyclerView.ViewHolder{
 
-        TextView stepsText;
+        final TextView stepsText;
         StepsViewHolder(@NonNull View itemView) {
             super(itemView);
             stepsText = itemView.findViewById(R.id.list_textView);

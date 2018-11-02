@@ -1,12 +1,12 @@
 package com.example.android.bakingfun;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -17,13 +17,9 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.Serializable;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private Recipe[] allRecipes;
@@ -54,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(state);
         // Save list state
             state.putSerializable(RECIPES_DATA,allRecipes);
-            state.putParcelable(LIST, mRecyclerView.getLayoutManager().onSaveInstanceState());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            state.putParcelable(LIST, Objects.requireNonNull(mRecyclerView.getLayoutManager()).onSaveInstanceState());
+        }
 
     }
 
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void requestDataAndDisplay(final Context context, String url){
+    private void requestDataAndDisplay(final Context context, String url){
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayData(Context context,Recipe[] recipe){
-        mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(context, recipe);
@@ -106,9 +104,5 @@ public class MainActivity extends AppCompatActivity {
             mRecyclerView.setAdapter(mAdapter);
         }
 
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
     }
 }

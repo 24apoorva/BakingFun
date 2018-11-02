@@ -2,7 +2,7 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/text_view_widget"
-    android:padding="2dp"
+    android:padding="@dimen/dp_2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:text = "ingrediant"

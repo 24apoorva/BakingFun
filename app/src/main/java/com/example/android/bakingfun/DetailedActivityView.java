@@ -2,15 +2,12 @@ package com.example.android.bakingfun;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.example.android.bakingfun.fragmentsdata.DetailsStepsFragment;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
@@ -32,11 +29,6 @@ public class DetailedActivityView extends AppCompatActivity {
     private static final String TAG = "DetailedStepsActivity";
     private final String NUMBER = "position number";
     private final String TIME = "time";
-    private View mContentView;
-    //    @BindView(R.id.next_button)
-//    ImageButton nextButton;
-//    @BindView(R.id.pre_button)
-//    ImageButton preButton;
     private int position;
     private Step playingStep;
     private List<Step> steps;
@@ -52,7 +44,6 @@ public class DetailedActivityView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_view);
-        mContentView = findViewById(R.id.steps_details);
         Intent intent = getIntent();
         Recipe recipe = (Recipe) intent.getSerializableExtra(DETAILED_DATA);
         steps = recipe.getSteps();
@@ -100,8 +91,9 @@ public class DetailedActivityView extends AppCompatActivity {
         Log.d(TAG, "onPause called");
         if (player != null) {
             timePosition = player.getCurrentPosition();
+            player.setPlayWhenReady(false);
         }
-        player.setPlayWhenReady(false);
+
 
     }
 
@@ -117,12 +109,11 @@ public class DetailedActivityView extends AppCompatActivity {
         String UserAgent = Util.getUserAgent(this, getString(R.string.app_name));
 
         //Creating Media Source
-        MediaSource contentMediaSource = new ExtractorMediaSource(Uri.parse(videoUrl),
+        //return media source
+        return new ExtractorMediaSource(Uri.parse(videoUrl),
                 new DefaultHttpDataSourceFactory(UserAgent),
                 new DefaultExtractorsFactory(),
                 null, null);
-        //return media source
-        return contentMediaSource;
     }
 
     private void initializeVideo(Step step) {
@@ -136,8 +127,8 @@ public class DetailedActivityView extends AppCompatActivity {
                 exoPlayerView.setVisibility(View.GONE);
             }
         }
-        TextView descriptionTextView = (TextView) findViewById(R.id.description_tv);
-        TextView stepNumbersTextView = (TextView) findViewById(R.id.stepnumbers_tv);
+        TextView descriptionTextView = findViewById(R.id.description_tv);
+        TextView stepNumbersTextView = findViewById(R.id.stepnumbers_tv);
         String s = (position) + "/" + (steps.size()-1);
         if(position == 0){
             stepNumbersTextView.setVisibility(View.INVISIBLE);
@@ -170,8 +161,8 @@ public class DetailedActivityView extends AppCompatActivity {
     private void initializeLandVideo(Step step) {
         setTitle(title+" : "+step.getShortDescription());
         SimpleExoPlayerView exoPlayerView = findViewById(R.id.video_view);
-        TextView descriptionTextView = (TextView) findViewById(R.id.description_tv);
-        TextView stepNumbersTextView = (TextView) findViewById(R.id.stepnumbers_tv);
+        TextView descriptionTextView = findViewById(R.id.description_tv);
+        TextView stepNumbersTextView = findViewById(R.id.stepnumbers_tv);
         exoPlayerView.setVisibility(View.VISIBLE);
         descriptionTextView.setVisibility(View.GONE);
         String url = step.getVideoURL();
@@ -213,7 +204,7 @@ public class DetailedActivityView extends AppCompatActivity {
     }
 
     private void nextButtonClicked(final int stepNumber, final List<Step> stepsList) {
-        nextButton = (ImageButton)findViewById(R.id.next_button);
+        nextButton = findViewById(R.id.next_button);
         if (stepNumber == steps.size() - 1) {
             nextButton.setVisibility(View.INVISIBLE);
         } else {
@@ -241,7 +232,7 @@ public class DetailedActivityView extends AppCompatActivity {
     }
 
     private void prevButtonClicked(final int stepNumber, final List<Step> stepsList) {
-        preButton = (ImageButton)findViewById(R.id.pre_button);
+        preButton = findViewById(R.id.pre_button);
         if (stepNumber == 0) {
             preButton.setVisibility(View.INVISIBLE);
         } else {

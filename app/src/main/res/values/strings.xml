@@ -5,9 +5,11 @@
     <string name="applePie">Apple Pie</string>
     <string name="servings">Number of servings: </string>
     <string name="sample_description">5. Beat the cream cheese and 50 grams (1/4 cup) of sugar on medium speed in a stand mixer or high speed with a hand mixer for 3 minutes. Decrease the speed to medium-low and gradually add in the cold cream. Add in 2 teaspoons of vanilla and beat until stiff peaks form.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="finish_button_text">"Finish</string>
+    <string name="backButton_des">"Back Button"</string>
+    <string name="for_Button_des">"Forward Button"</string>
+    <string name="servings_tv">Servings size: </string>
 </resources>

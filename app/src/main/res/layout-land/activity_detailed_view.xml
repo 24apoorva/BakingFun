@@ -28,8 +28,8 @@
                 android:layout_width="match_parent"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:padding="5dp"
+                android:layout_margin="@dimen/dp_3"
+                android:padding="@dimen/d_5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="italic"
                 tools:text="@string/sample_description" />
@@ -53,11 +53,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_back_black_24dp"
-            android:id="@+id/pre_button"/>
+            android:id="@+id/pre_button"
+            android:contentDescription="@string/backButton_des" />
 
         <TextView
             android:id="@+id/stepnumbers_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
@@ -68,7 +69,8 @@
             android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_forward_black_24dp" />
+            android:src="@drawable/ic_arrow_forward_black_24dp"
+            android:contentDescription="@string/for_Button_des" />
 
     </LinearLayout>
 

@@ -22,7 +22,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 @LargeTest
 public class RecipeCardClickedTest extends AndroidJUnitRunner {
     // Context of the app under test.
-    private Context appContext = InstrumentationRegistry.getTargetContext();
+    private final Context appContext = InstrumentationRegistry.getTargetContext();
     @Rule
     public ActivityTestRule<MainActivity> mainActivityActivityTestRule = new ActivityTestRule<>(MainActivity.class);
     @Test

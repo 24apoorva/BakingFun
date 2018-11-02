@@ -13,11 +13,12 @@
         app:cardElevation="@dimen/dp_3">
 
         <TextView
-            android:id="@+id/list_textView"
+            android:id="@+id/widget_list_textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/d_5dp"
             android:gravity="center"
+            android:background="@drawable/selector_list"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:text="@string/applePie" />
 

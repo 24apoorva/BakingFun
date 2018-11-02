@@ -1,23 +1,15 @@
 package com.example.android.bakingfun.fragmentsdata;
-
-
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.android.bakingfun.R;
-import com.example.android.bakingfun.Recipe;
-import com.example.android.bakingfun.RecipeStepsActivity;
 import com.example.android.bakingfun.Step;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -32,8 +24,6 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
-import java.util.List;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -45,14 +35,12 @@ public class DetailsStepsFragment extends Fragment {
     private int position;
     private Step playingStep;
     private long timePosition;
-    private String title;
     private int listIndex;
     private Step stepData;
 
 
     //Define Field for SimpleExoPlayer
     private SimpleExoPlayer player;
-    private View mContentView;
 
     public DetailsStepsFragment() {
         // Required empty public constructor
@@ -63,8 +51,6 @@ public class DetailsStepsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_details_steps, container, false);
-        mContentView = view.findViewById(R.id.steps_details);
-      //  steps = RecipeStepsActivity.recipe.getSteps();
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(NUMBER)) {
                 position = savedInstanceState.getInt(NUMBER);
@@ -132,12 +118,11 @@ public class DetailsStepsFragment extends Fragment {
         String UserAgent = Util.getUserAgent(getContext(), getString(R.string.app_name));
 
         //Creating Media Source
-        MediaSource contentMediaSource = new ExtractorMediaSource(Uri.parse(videoUrl),
+        //return media source
+        return new ExtractorMediaSource(Uri.parse(videoUrl),
                 new DefaultHttpDataSourceFactory(UserAgent),
                 new DefaultExtractorsFactory(),
                 null, null);
-        //return media source
-        return contentMediaSource;
     }
 
     private void initializeVideo(Step step, View view) {
@@ -150,7 +135,7 @@ public class DetailsStepsFragment extends Fragment {
                 exoPlayerView.setVisibility(View.GONE);
             }
         }
-        TextView descriptionTextView = (TextView) view.findViewById(R.id.description_tv);
+        TextView descriptionTextView = view.findViewById(R.id.description_tv);
 
         String description = step.getDescription();
         descriptionTextView.setText(description);
