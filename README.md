@@ -9,3 +9,12 @@ App will allow a user to select a recipe and see video-guided steps for how to c
 - Added a widget so user can have acess to ingrediants.
 
 ## Application Images
+
+<p align="center">
+   <img src="https://github.com/24apoorva/BakingFun/blob/master/widget_config_page.jpeg" width="250" title="widget_config_page.jpeg">
+   <img src="https://github.com/24apoorva/BakingFun/blob/master/app_widget.jpeg" width="250" title="App_widget">
+   <img src="https://github.com/24apoorva/BakingFun/blob/master/BakingApp_mainPage.jpeg" width="250" title="Main Page">
+   <img src="https://github.com/24apoorva/BakingFun/blob/master/Ingrediants.jpeg" width="250" title="Ingrediants Page">
+   <img src="https://github.com/24apoorva/BakingFun/blob/master/steps%20(2).jpeg" width="250" title="Steps">
+   <img src="https://github.com/24apoorva/BakingFun/blob/master/step_details.jpeg" width="250" title="Step Details">
+</p>
